@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocoon Header</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <header class="w3-bar w3-khaki w3-padding">
+        <div class="w3-bar-item w3-left">
+            <div class="w3-margin-right">
+                <img src="https://cdn.nuco.vn/static/brand/thumb/cocoon_625849ab1b1c8_600_450_keep_ratio.png" alt="Search" class="w3-circle" style="width:70px;height:70px;">
+            </div>
+        </div>
+        
+        <div class="w3-margin" style="position:absolute;top:10px;left:100px">
+            <input type="text" class="w3-input w3-border" placeholder="Tìm kiếm sản phẩm..." style="width:300px;display:inline-block">
+            <button onclick="searchProducts()" class="w3-button w3-khaki w3-hover-light-grey">
+                <span>Tìm kiếm</span>
+            </button>
+        </div>
+        
+        <div class="w3-center w3-brown" style="font-size:40px;position:absolute;left:50%;transform:translateX(-50%);top:20px">
+            <strong>COCOON VIỆT NAM</strong>
+        </div>
+        <div class="w3-bar-item w3-right">
+            <a href="#" class="w3-bar-item w3-button w3-hover-light-grey">Đăng nhập</a>
+            <a href="#" class="w3-bar-item w3-button w3-hover-light-grey">Liên hệ</a>
+            <a href="#" class="w3-bar-item w3-button w3-hover-light-grey">Giỏ hàng</a>
+        </div>
+    </header>
+
+    <div class="w3-row">
+        <h1 class="w3-margin-left">GIỚI THIỆU SẢN PHẨM ĐẾN TỪ VIỆT NAM</h1>
+    </div>
+
+    <div class="w3-container w3-margin w3-padding w3-border w3-round">
+        <h2>Đánh giá sản phẩm</h2>
+        <div class="w3-xlarge w3-text-amber">
+            <span onclick="rate(1)">★</span>
+            <span onclick="rate(2)">★</span>
+            <span onclick="rate(3)">★</span>
+            <span onclick="rate(4)">★</span>
+            <span onclick="rate(5)">★</span>
+        </div>
+        <div class="w3-margin-top">
+            <h3>Bình luận</h3>
+            <textarea class="w3-input w3-border w3-round" placeholder="Viết bình luận của bạn..."></textarea>
+            <button class="w3-button w3-khaki w3-text-white w3-margin-top" onclick="submitComment()">G��i bình luận</button>
+        </div>
+    </div>
+
+    <script>
+    function searchProducts() {
+        const searchTerm = document.querySelector('input').value;
+        alert('Đang tìm kiếm: ' + searchTerm);
+    }
+
+    function rate(stars) {
+        const starElements = document.querySelectorAll('.w3-xlarge span');
+        starElements.forEach((star, index) => {
+            if (index < stars) {
+                star.style.color = '#ffd700';
+            } else {
+                star.style.color = '#ddd';
+            }
+        });
+    }
+
+    function submitComment() {
+        const comment = document.querySelector('textarea').value;
+        if (comment.trim() !== '') {
+            alert('Đã gửi bình luận: ' + comment);
+            document.querySelector('textarea').value = '';
+        }
+    }
+    </script>
+</body>
+</html>
