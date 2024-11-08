@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm - Cocoon</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .product-card {
+            transition: transform 0.3s ease;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+            background: #f4e6d4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px 0;
+            height: 2.4em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-price {
+            color: #8B4513;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 40px;
+            border-radius: 20px;
+            border: 2px solid #8B4513;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8B4513;
+            font-size: 1em;
+        }
+
+        .w3-bar-item.w3-button:hover {
+            background-color: rgba(139, 69, 19, 0.1) !important;
+            border-radius: 25px;
+        }
+
+        .w3-bar {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 600px) {
+            .w3-center {
+                font-size: 30px !important;
+                position: static !important;
+                transform: none !important;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .w3-bar-item.w3-right {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .w3-bar-item.w3-button {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+            }
+        }
+
+        .cart-button {
+            background-color: #8B4513;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .cart-button:hover {
+            background-color: #a0522d;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .promotion-price {
+            color: #ff4444;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .rating-stars {
+            color: #FFD700;
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+
+        .rating-stars .fas {
+            margin-right: 2px;
+        }
+
+        .rating-count {
+            color: #666;
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+
+        /* Thêm style cho giỏ hàng trên nav */
+        .cart-icon {
+            color: #8B4513;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .cart-icon:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Cập nhật style cho nav */
+        .w3-bar-item.w3-button {
+            color: #8B4513;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+
+        /* Thêm style cho nút scroll-to-top */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #8B4513;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .scroll-to-top:hover {
+            background-color: #a0522d;
+            transform: translateY(-3px);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #cartCount {
+            background-color: #8B4513;
+            color: white;
+            border-radius: 50%;
+            padding: 1px 5px;
+            font-size: 10px;
+            position: absolute;
+            top: -5px;
+            right: 8px;
+            min-width: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Thay thế phần header cũ -->
+    <header>
+        <div class="w3-bar w3-padding" style="background-color: #f4e6d4; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div class="w3-bar-item w3-left">
+                <a href="index.html">
+                    <img src="https://cdn.nuco.vn/static/brand/thumb/cocoon_625849ab1b1c8_600_450_keep_ratio.png" 
+                         alt="Logo" 
+                         class="w3-circle" 
+                         style="width:50px;height:50px;">
+                </a>
+            </div>
+            
+            <div class="w3-center" 
+                 style="font-size:35px;position:absolute;left:50%;transform:translateX(-50%);top:12px;font-family:'Arial Rounded MT Bold'">
+                <strong style="color: #8B4513;">COCOON VIỆT NAM</strong>
+            </div>
+
+            <div class="w3-bar-item w3-right" style="margin-top:10px">
+                <a href="index.html" 
+                   class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown"
+                   style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">
+                    Trang chủ
+                </a>
+                <a href="product.html" 
+                   class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown"
+                   style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">
+                    Sản phẩm
+                </a>
+                <a href="cart.html" 
+                   class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Thay thế phần thanh tìm kiếm cũ -->
+    <div class="w3-container" style="background-color: #f4e6d4; padding: 15px 0;">
+        <div class="search-container">
+            <input type="text" 
+                   class="search-input" 
+                   placeholder="Tìm kiếm sản phẩm...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </div>
+
+    <!-- Grid sản phẩm -->
+    <div class="w3-container">
+        <div id="productGrid" class="w3-row-padding">
+            <!-- Sản phẩm sẽ được thêm vào đây bằng JavaScript -->
+        </div>
+    </div>
+
+    <!-- Thêm nút scroll-to-top vào cuối body, trước thẻ đóng body -->
+    <button class="scroll-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+    // Cập nhật hàm updateCartCount
+    function updateCartCount() {
+        const cartCount = document.getElementById('cartCount');
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        
+        if (totalItems > 0) {
+            cartCount.textContent = totalItems;
+            cartCount.style.display = 'inline';
+        } else {
+            cartCount.style.display = 'none';
+        }
+    }
+
+    // Cập nhật hàm addToCart
+    function addToCart(productId, productName, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            // Tìm sản phẩm trong danh sách sản phẩm để lấy image
+            const product = products.find(p => p.id === productId);
+            cart.push({
+                id: productId,
+                name: productName,
+                price: price,
+                quantity: 1,
+                image: product.image
+            });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Đã thêm sản phẩm vào giỏ hàng!');
+        updateCartCount();
+    }
+
+    // Biến lưu trữ danh sách s��n phẩm
+    let products = [];
+
+    // Cập nhật hàm loadProducts
+    async function loadProducts() {
+        try {
+            const response = await fetch('data/products.json');
+            const data = await response.json();
+            products = data.products;
+
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+
+            products.forEach(product => {
+                const promotionPrice = Math.floor(product.price * 0.8);
+                productGrid.innerHTML += `
+                    <div class="w3-quarter w3-margin-bottom">
+                        <div class="product-card">
+                            <div style="overflow: hidden;">
+                                <img src="${product.image}" alt="${product.name}" class="product-image">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">${product.name}</div>
+                                <div class="product-price">
+                                    <span class="original-price">${product.price.toLocaleString()}đ</span>
+                                    <span class="promotion-price">${promotionPrice.toLocaleString()}đ</span>
+                                </div>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-count">(50)</span>
+                                </div>
+                                <button class="cart-button" onclick="addToCart(${product.id}, '${product.name}', ${promotionPrice})">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Thêm vào giỏ hàng
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            updateCartCount();
+        } catch (error) {
+            console.error('Lỗi khi tải sản phẩm:', error);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadProducts);
+
+    // Thêm function scrollToTop
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Xử lý hiển thị/ẩn nút scroll-to-top
+    window.addEventListener('scroll', function() {
+        const scrollButton = document.querySelector('.scroll-to-top');
+        if (window.pageYOffset > 300) {
+            scrollButton.classList.add('visible');
+        } else {
+            scrollButton.classList.remove('visible');
+        }
+    });
+    </script>
+</body>
+</html> 

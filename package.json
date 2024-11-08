@@ -1,0 +1,9 @@
+{
+  "name": "cocoon-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5"
+  }
+}

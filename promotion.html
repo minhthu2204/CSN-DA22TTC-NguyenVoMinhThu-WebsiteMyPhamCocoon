@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khuyến mãi - Cocoon</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .product-card {
+            transition: transform 0.3s ease;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+            background: #f4e6d4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px 0;
+            height: 2.4em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-price {
+            color: #8B4513;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .cart-button {
+            background-color: #8B4513;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .cart-button:hover {
+            background-color: #a0522d;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="w3-bar w3-padding" style="background-color: #f4e6d4;">
+        <div class="w3-bar-item w3-left">
+            <a href="index.html">
+                <img src="https://cdn.nuco.vn/static/brand/thumb/cocoon_625849ab1b1c8_600_450_keep_ratio.png" 
+                     alt="Logo" 
+                     class="w3-circle" 
+                     style="width:50px;height:50px;">
+            </a>
+        </div>
+        
+        <div class="w3-center" 
+             style="font-size:35px;position:absolute;left:50%;transform:translateX(-50%);top:12px;font-family:'Arial Rounded MT Bold'">
+            <strong style="color: #8B4513;">COCOON VIỆT NAM</strong>
+        </div>
+
+        <div class="w3-bar-item w3-right" style="margin-top:10px">
+            <a href="index.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown" style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">Trang chủ</a>
+            <a href="product.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown" style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">Sản phẩm</a>
+            <a href="promotion.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown" style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">Khuyến mãi</a>
+            <a href="cart.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown" style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">Giỏ hàng</a>
+        </div>
+    </header>
+
+    <div class="w3-container">
+        <div id="promotionProducts" class="w3-row-padding">
+            <!-- Sản phẩm khuyến mãi sẽ được thêm vào đây -->
+        </div>
+    </div>
+
+    <script>
+        async function loadPromotionProducts() {
+            try {
+                const response = await fetch('data/products.json');
+                const data = await response.json();
+                const promotionProducts = data.products.filter(product => product.is_promotion);
+                
+                const container = document.getElementById('promotionProducts');
+                promotionProducts.forEach(product => {
+                    const promotionPrice = Math.floor(product.price * 0.8); // Giảm 20%
+                    container.innerHTML += `
+                        <div class="w3-quarter w3-margin-bottom">
+                            <div class="product-card">
+                                <div style="overflow: hidden;">
+                                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name">${product.name}</div>
+                                    <div class="product-price">
+                                        <span class="original-price">${product.price.toLocaleString()}đ</span>
+                                        <span style="color: #ff4444;">${promotionPrice.toLocaleString()}đ</span>
+                                    </div>
+                                    <button class="cart-button">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error('Lỗi khi tải sản phẩm khuyến mãi:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPromotionProducts);
+    </script>
+</body>
+</html>

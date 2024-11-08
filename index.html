@@ -3,51 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocoon Header</title>
+    <title>Trang chủ - Cocoon</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Header styles */
+        .w3-bar {
+            background-color: #f4e6d4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .w3-bar-item.w3-button {
+            color: #8B4513;
+            transition: all 0.3s ease;
+        }
+
+        .w3-bar-item.w3-button:hover {
+            background-color: rgba(139, 69, 19, 0.1) !important;
+            border-radius: 25px;
+        }
+
+        /* Search bar styles */
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8B4513;
+            font-size: 1.2em;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px;
+            border-radius: 25px;
+            border: 2px solid #8B4513;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .w3-center {
+                font-size: 30px !important;
+                position: static !important;
+                transform: none !important;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .w3-bar-item.w3-right {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .w3-bar-item.w3-button {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+            }
+        }
+
+        /* Rating section styles */
+        .rating-section {
+            padding: 50px 0;
+            background-color: #fff;
+        }
+
+        .rating-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .rating-card {
+            width: 300px;
+            padding: 20px;
+            margin: 20px;
+            background: #f4e6d4;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .rating-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .rating-stars {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .rating-stars .fa-star {
+            color: #ddd;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            margin: 0 2px;
+        }
+
+        .rating-stars .fa-star:hover {
+            color: #FFD700;
+        }
+
+        /* Hiệu ứng fill màu cho các sao phía trước khi hover */
+        .rating-stars .fa-star:hover ~ .fa-star {
+            color: #ddd;
+        }
+
+        .rating-stars:hover .fa-star {
+            color: #FFD700;
+        }
+
+        .rating-text {
+            color: #8B4513;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .rating-user {
+            font-weight: bold;
+            color: #8B4513;
+            margin-top: 15px;
+        }
+
+        .rating-title {
+            text-align: center;
+            color: #8B4513;
+            font-size: 32px;
+            margin-bottom: 40px;
+            font-family: 'Arial Rounded MT Bold';
+        }
+
+        .rating-form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .rating-form textarea {
+            width: 100%;
+            max-width: 500px;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #8B4513;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .star-rating {
+            display: inline-block;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .star-rating .fa-star {
+            color: #ddd;
+            transition: color 0.2s;
+        }
+
+        .star-rating .fa-star.active {
+            color: #FFD700;
+        }
+
+        .submit-rating {
+            background-color: #8B4513;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-rating:hover {
+            background-color: #a0522d;
+            transform: translateY(-2px);
+        }
+
+        .rating-name {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px auto;
+            padding: 8px;
+            border: 2px solid #8B4513;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .rating-textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 2px solid #8B4513;
+            border-radius: 10px;
+            resize: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .rating-textarea:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.3);
+        }
+
+        .rating-submit {
+            background-color: #8B4513;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .rating-submit:hover {
+            background-color: #a0522d;
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            color: #8B4513;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .cart-icon:hover {
+            transform: translateY(-2px);
+        }
+
+        #cartCount {
+            background-color: #8B4513;
+            color: white;
+            border-radius: 50%;
+            padding: 1px 5px;
+            font-size: 10px;
+            position: absolute;
+            top: -5px;
+            right: 8px;
+            min-width: 15px;
+            min-height: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon i {
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <header class="w3-bar w3-khaki w3-padding">
+    <!-- Header -->
+    <header class="w3-bar w3-padding">
         <div class="w3-bar-item w3-left">
-            <div class="w3-margin-right">
-                <img src="https://cdn.nuco.vn/static/brand/thumb/cocoon_625849ab1b1c8_600_450_keep_ratio.png" alt="Search" class="w3-circle" style="width:70px;height:70px;">
-            </div>
+            <a href="index.html">
+                <img src="https://cdn.nuco.vn/static/brand/thumb/cocoon_625849ab1b1c8_600_450_keep_ratio.png" 
+                     alt="Logo" 
+                     class="w3-circle" 
+                     style="width:70px;height:70px;">
+            </a>
         </div>
         
-        <div class="w3-margin" style="position:absolute;top:10px;left:100px">
-            <input type="text" class="w3-input w3-border" placeholder="Tìm kiếm sản phẩm..." style="width:300px;display:inline-block">
-            <button onclick="searchProducts()" class="w3-button w3-khaki w3-hover-light-grey">
-                <span>Tìm kiếm</span>
-            </button>
+        <div class="w3-center" 
+             style="font-size:40px;position:absolute;left:50%;transform:translateX(-50%);top:20px;font-family:'Arial Rounded MT Bold'">
+            <strong style="color: #8B4513;">COCOON VIỆT NAM</strong>
         </div>
-        
-        <div class="w3-center w3-brown" style="font-size:40px;position:absolute;left:50%;transform:translateX(-50%);top:20px">
-            <strong>COCOON VIỆT NAM</strong>
-        </div>
-        <div class="w3-bar-item w3-right">
-            <a href="#" class="w3-bar-item w3-button w3-hover-light-grey">Đăng nhập</a>
-            <a href="#" class="w3-bar-item w3-button w3-hover-light-grey">Liên hệ</a>
-            <a href="#" class="w3-bar-item w3-button w3-hover-light-grey">Giỏ hàng</a>
+
+        <div class="w3-bar-item w3-right" style="margin-top:10px">
+            <a href="index.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown" style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">Trang chủ</a>
+            <a href="product.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown" style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">Sản phẩm</a>
+            <a href="cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartCount">0</span>
+            </a>
         </div>
     </header>
 
-    <div class="w3-row">
-        <h1 class="w3-margin-left">GIỚI THIỆU SẢN PHẨM ĐẾN TỪ VIỆT NAM</h1>
+    <!-- Thay đổi phần banner và thanh tìm kiếm -->
+    <div class="w3-display-container">
+        <img src="anh/anhtrangchu.jpg" 
+             alt="Ảnh trang chủ" 
+             style="width:100%;height:calc(100vh - 100px);object-fit:cover;">
+        <div class="w3-display-middle" style="transform: translate(-40%, -150px);">
+            <div class="search-container">
+                <input type="text" 
+                       class="search-input" 
+                       placeholder="Tìm kiếm sản phẩm...">
+                <span class="search-icon fas fa-search"></span>
+            </div>
+        </div>
     </div>
 
-    <div class="w3-container w3-margin w3-padding w3-border w3-round">
-        <h2>Đánh giá sản phẩm</h2>
-        <div class="w3-xlarge w3-text-amber">
-            <span onclick="rate(1)">★</span>
-            <span onclick="rate(2)">★</span>
-            <span onclick="rate(3)">★</span>
-            <span onclick="rate(4)">★</span>
-            <span onclick="rate(5)">★</span>
-        </div>
-        <div class="w3-margin-top">
-            <h3>Bình luận</h3>
-            <textarea class="w3-input w3-border w3-round" placeholder="Viết bình luận của bạn..."></textarea>
-            <button class="w3-button w3-khaki w3-text-white w3-margin-top" onclick="submitComment()">G��i bình luận</button>
+    <!-- Thêm phần HTML cho đánh giá sao (đặt sau phần banner) -->
+    <div class="rating-section">
+        <h2 class="rating-title">ĐÁNH GIÁ TỪ KHÁCH HÀNG</h2>
+        <div class="rating-container">
+            <div class="rating-card">
+                <div class="rating-stars">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <textarea class="rating-textarea" placeholder="Nhập đánh giá của bạn..." rows="4"></textarea>
+                <button class="rating-submit">Gửi đánh giá</button>
+            </div>
         </div>
     </div>
 
@@ -57,24 +350,107 @@
         alert('Đang tìm kiếm: ' + searchTerm);
     }
 
-    function rate(stars) {
-        const starElements = document.querySelectorAll('.w3-xlarge span');
-        starElements.forEach((star, index) => {
-            if (index < stars) {
-                star.style.color = '#ffd700';
-            } else {
-                star.style.color = '#ddd';
-            }
-        });
-    }
-
-    function submitComment() {
-        const comment = document.querySelector('textarea').value;
-        if (comment.trim() !== '') {
-            alert('Đã gửi bình luận: ' + comment);
-            document.querySelector('textarea').value = '';
+    function toggleProducts() {
+        const productSection = document.getElementById('productSection');
+        if (productSection.style.display === 'none') {
+            productSection.style.display = 'block';
+        } else {
+            productSection.style.display = 'none';
         }
     }
+
+    // Thêm hàm mới để cập nhật số lượng trong giỏ hàng
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    // Gọi hàm cập nhật khi trang được tải
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+    });
+
+    // Thêm chức năng tìm kiếm
+    document.querySelector('.search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const searchTerm = this.value.trim().toLowerCase();
+            if (searchTerm) {
+                window.location.href = `search.html?q=${searchTerm}`;
+            }
+        }
+    });
+
+    const stars = document.querySelectorAll('.rating-stars .fa-star');
+    let selectedRating = 0;
+    
+    stars.forEach((star, index) => {
+        star.addEventListener('mouseover', () => {
+            // Fill màu vàng cho các sao từ đầu đến sao đang hover
+            for (let i = 0; i <= index; i++) {
+                stars[i].style.color = '#FFD700';
+            }
+            // Giữ màu xám cho các sao còn lại
+            for (let i = index + 1; i < stars.length; i++) {
+                stars[i].style.color = '#ddd';
+            }
+        });
+
+        star.addEventListener('mouseout', () => {
+            // Nếu đã chọn rating thì giữ màu cho các sao đã chọn
+            if (selectedRating > 0) {
+                stars.forEach((s, i) => {
+                    s.style.color = i < selectedRating ? '#FFD700' : '#ddd';
+                });
+            } else {
+                // Nếu chưa chọn thì reset về màu xám
+                stars.forEach(s => {
+                    s.style.color = '#ddd';
+                });
+            }
+        });
+
+        star.addEventListener('click', () => {
+            selectedRating = index + 1;
+            // Fill màu vàng cho các sao đã chọn
+            stars.forEach((s, i) => {
+                s.style.color = i < selectedRating ? '#FFD700' : '#ddd';
+            });
+        });
+    });
+
+    document.querySelector('.rating-submit').addEventListener('click', function() {
+        const rating = selectedRating;
+        const comment = document.querySelector('.rating-textarea').value.trim();
+        
+        if (rating === 0) {
+            alert('Vui lòng chọn số sao đánh giá!');
+            return;
+        }
+        
+        if (!comment) {
+            alert('Vui lòng nhập nội dung đánh giá!');
+            return;
+        }
+
+        // Lưu đánh giá vào localStorage
+        const review = {
+            rating: rating,
+            comment: comment,
+            date: new Date().toLocaleDateString()
+        };
+
+        const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+        reviews.push(review);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+        // Reset form
+        selectedRating = 0;
+        document.querySelector('.rating-textarea').value = '';
+        stars.forEach(s => s.style.color = '#ddd');
+        
+        alert('Cảm ơn bạn đã gửi đánh giá!');
+    });
     </script>
 </body>
 </html>

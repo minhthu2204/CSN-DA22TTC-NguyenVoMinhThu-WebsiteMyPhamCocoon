@@ -1,0 +1,216 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Dầu tẩy trang hoa hồng 310ml",
+            "price": 345000,
+            "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_dak_lak_coffee_body_scrub_200ml_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Dầu tẩy trang hoa hồng",
+            "is_promotion": true
+        },
+        {
+            "id": 2,
+            "name": "Nước tẩy trang hoa hồng 140ml",
+            "price": 155000,
+            "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_ben_tre_coconut_hair_mask_200ml_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Nước tẩy trang hoa hồng",
+            "is_promotion": true
+        },
+        {
+            "id": 3,
+            "name": "Nước tẩy trang bí đao 500ml",
+            "price": 295000,
+             "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_red_pomelo_body_lotion_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Nước tẩy trang bí đao",
+            "is_promotion": true
+        },
+        {
+            "id": 4,
+            "name": "Sữa rữa mặt cà phê 310ml",
+            "price": 289000,
+            "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_coconut_cleansing_oil_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Del rữa mặt cà phê",
+            "is_promotion": true
+        },
+        {
+            "id": 5,
+            "name": "Gel rữa mặt nghệ 310ml",
+            "price": 295000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Sữa rữa mặt nghệ",
+            "is_promotion": true
+        },
+        {
+            "id": 6,
+            "name": "Gel rữa mặt hoa hồng 140ml",
+            "price": 195000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Gel rữa mặt hoa hồng",
+            "is_promotion": true
+        },
+        {
+            "id": 7,
+            "name": "Gel rữa mặt bí đao 310ml",
+            "price": 295000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Gel rữa mặt bí đao",
+            "is_promotion": true
+        },
+        {
+            "id": 8,
+            "name": "Nước cân bằng từ sen 310ml",
+            "price": 295000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Nước cân bằng từ sen",
+            "is_promotion": true
+        },
+        {
+            "id": 9,
+            "name": "Nước cân bằng từ nghệ 310ml",
+            "price": 295000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Nước cân bằng từ nghệ",
+            "is_promotion": true
+        },
+        {
+            "id": 10,
+            "name": "Nước cân bằng bí đao 310ml",
+            "price": 295000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Nước cân bằng bí đao",
+            "is_promotion": true
+        },
+        {
+            "id": 11,
+            "name": "Mặt nạ nghệ 100ml",
+            "price": 345000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Mặt nạ nghệ",
+            "is_promotion": true
+        },
+        {
+            "id": 12,
+            "name": "Mặt nạ bí đao 100ml",
+            "price": 145000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Mặt nạ bí đao",
+            "is_promotion": true
+        },
+        {
+            "id": 13,
+            "name": "Tinh chất bí đao N15 70ml",
+            "price": 495000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Tinh chất bí đao N15",
+            "is_promotion": true
+        },
+        {
+            "id": 14,
+            "name": "Tinh chất nghệ C22 30ml",
+            "price": 465000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Tinh chất nghệ C22",
+            "is_promotion": true
+        },
+        {
+            "id": 15,
+            "name": "Tinh chất nghệ C10 30ml",
+            "price": 325000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Tinh chất nghệ C10",
+            "is_promotion": true
+        },
+        {
+            "id": 16,
+            "name": "Tinh chất hoa hồng 30ml",
+            "price": 256000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Tinh chất hoa hồng",
+            "is_promotion": true
+        },
+        {
+            "id": 17,
+            "name": "Dung dịch chấm mụn 5ml",
+            "price": 125000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Dung dịch chấm mụn",
+            "is_promotion": true
+        },
+        {
+            "id": 18,
+            "name": "Tinh chất bí đao N7 70ml",
+            "price": 295000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Tinh chất bí đao N7",
+            "is_promotion": true
+        },
+        {
+            "id": 19,
+            "name": "Tẩy tế bào chết da mặt 150ml",
+            "price": 165000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Tẩy tế bào chết da mặt",
+            "is_promotion": true
+        },
+        {
+            "id": 20,
+            "name": "Xịt khoáng nghệ 130ml",
+            "price": 215000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Tẩy tế bào chết da mặt",
+            "is_promotion": true
+        },
+        {
+            "id": 21,
+            "name": "Sữa chống nắng bí đao 50ml",
+            "price": 395000,
+          "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+            "description": "Sữa chống nắng bí đao",
+            "is_promotion": true
+        },
+        {
+        "id": 22,
+        "name": "Tẩy tế bào chết cà phê cho Body 200ml",
+        "price": 325000,
+      "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+        "description": "Tẩy tế bào chết cho Body",
+        "is_promotion": true
+      },
+      {
+        "id": 24,
+        "name": "Sữa tắm bí đao 310ml",
+        "price": 245000,
+      "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+        "description": "Sữa tắm bí đao",
+        "is_promotion": true
+      },
+      {
+        "id": 25,
+        "name": "Tinh dầu dưỡng tóc từ bưởi 140ml",
+        "price": 165000,
+      "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+        "description": "Tinh dầu dưỡng tóc từ bưởi",
+        "is_promotion": true
+      },
+      {
+        "id": 26,
+        "name": "Tẩy tế bào chết môi từ cà phê 5g",
+        "price": 75000,
+      "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+        "description": "Tẩy tế bào chết môi từ cà phê",
+        "is_promotion": true
+      },
+      {
+        "id": 27,
+        "name": "Son dưỡng từ dầu dừa 5g",
+        "price": 32000,
+      "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_thai_nguyen_green_tea_mask_625849ab1b1c8_600_450_keep_ratio.png",
+        "description": "Son dưỡng từ dầu dừa",
+        "is_promotion": true
+      }
+      
+
+
+        
+    ]
+}
