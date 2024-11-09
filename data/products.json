@@ -4,7 +4,7 @@
             "id": 1,
             "name": "Dầu tẩy trang hoa hồng 310ml",
             "price": 345000,
-            "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_dak_lak_coffee_body_scrub_200ml_625849ab1b1c8_600_450_keep_ratio.png",
+            "image": "../anh/dautaytranghoahong.jpg",
             "description": "Dầu tẩy trang hoa hồng",
             "is_promotion": true
         },
@@ -12,7 +12,7 @@
             "id": 2,
             "name": "Nước tẩy trang hoa hồng 140ml",
             "price": 155000,
-            "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_ben_tre_coconut_hair_mask_200ml_625849ab1b1c8_600_450_keep_ratio.png",
+            "image": "../anh/nuoctaytranghoahong.jpg",
             "description": "Nước tẩy trang hoa hồng",
             "is_promotion": true
         },
@@ -20,7 +20,7 @@
             "id": 3,
             "name": "Nước tẩy trang bí đao 500ml",
             "price": 295000,
-             "image": "https://cdn.nuco.vn/static/product/thumb/cocoon_red_pomelo_body_lotion_625849ab1b1c8_600_450_keep_ratio.png",
+             "image": "../anh/taytrangbidao.jpg",
             "description": "Nước tẩy trang bí đao",
             "is_promotion": true
         },

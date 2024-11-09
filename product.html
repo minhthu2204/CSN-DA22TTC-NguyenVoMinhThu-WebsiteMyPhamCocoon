@@ -292,7 +292,9 @@
         <div class="search-container">
             <input type="text" 
                    class="search-input" 
-                   placeholder="Tìm kiếm sản phẩm...">
+                   placeholder="Tìm kiếm sản phẩm..."
+                   id="searchInput"
+                   onkeyup="searchProducts()">
             <i class="fas fa-search search-icon"></i>
         </div>
     </div>
@@ -310,6 +312,23 @@
     </button>
 
     <script>
+    // Thêm đoạn code này vào đầu phần script
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lấy tham số tìm kiếm từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlParams.get('search');
+        
+        // Nếu có tham số tìm kiếm, điền vào ô input và thực hiện tìm kiếm
+        if (searchTerm) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = decodeURIComponent(searchTerm);
+            // Kích hoạt tìm kiếm ngay sau khi trang tải xong
+            setTimeout(() => {
+                searchProducts();
+            }, 100);
+        }
+    });
+
     // Cập nhật hàm updateCartCount
     function updateCartCount() {
         const cartCount = document.getElementById('cartCount');
@@ -348,8 +367,75 @@
         updateCartCount();
     }
 
-    // Biến lưu trữ danh sách s��n phẩm
+    // Biến lưu trữ danh sách sản phẩm
     let products = [];
+
+    // Thêm hàm tìm kiếm sản phẩm
+    function searchProducts() {
+        const searchInput = document.getElementById('searchInput');
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const productGrid = document.getElementById('productGrid');
+        
+        // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+        if (!searchTerm) {
+            displayProducts(products);
+            return;
+        }
+        
+        // Lọc sản phẩm theo từ khóa
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(searchTerm)
+        );
+        
+        displayProducts(filteredProducts);
+    }
+
+    // Tách logic hiển thị sản phẩm thành hàm riêng
+    function displayProducts(productsToDisplay) {
+        const productGrid = document.getElementById('productGrid');
+        productGrid.innerHTML = '';
+
+        if (productsToDisplay.length === 0) {
+            productGrid.innerHTML = `
+                <div class="w3-container w3-center" style="padding: 50px;">
+                    <h3 style="color: #8B4513;">Không tìm thấy sản phẩm phù hợp</h3>
+                </div>
+            `;
+            return;
+        }
+
+        productsToDisplay.forEach(product => {
+            const promotionPrice = Math.floor(product.price * 0.8);
+            productGrid.innerHTML += `
+                <div class="w3-quarter w3-margin-bottom">
+                    <div class="product-card">
+                        <div style="overflow: hidden;">
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-price">
+                                <span class="original-price">${product.price.toLocaleString()}đ</span>
+                                <span class="promotion-price">${promotionPrice.toLocaleString()}đ</span>
+                            </div>
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-count">(50)</span>
+                            </div>
+                            <button class="cart-button" onclick="addToCart(${product.id}, '${product.name}', ${promotionPrice})">
+                                <i class="fas fa-shopping-cart"></i>
+                                Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
 
     // Cập nhật hàm loadProducts
     async function loadProducts() {
@@ -357,42 +443,7 @@
             const response = await fetch('data/products.json');
             const data = await response.json();
             products = data.products;
-
-            const productGrid = document.getElementById('productGrid');
-            productGrid.innerHTML = '';
-
-            products.forEach(product => {
-                const promotionPrice = Math.floor(product.price * 0.8);
-                productGrid.innerHTML += `
-                    <div class="w3-quarter w3-margin-bottom">
-                        <div class="product-card">
-                            <div style="overflow: hidden;">
-                                <img src="${product.image}" alt="${product.name}" class="product-image">
-                            </div>
-                            <div class="product-info">
-                                <div class="product-name">${product.name}</div>
-                                <div class="product-price">
-                                    <span class="original-price">${product.price.toLocaleString()}đ</span>
-                                    <span class="promotion-price">${promotionPrice.toLocaleString()}đ</span>
-                                </div>
-                                <div class="rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-count">(50)</span>
-                                </div>
-                                <button class="cart-button" onclick="addToCart(${product.id}, '${product.name}', ${promotionPrice})">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    Thêm vào giỏ hàng
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-
+            displayProducts(products);
             updateCartCount();
         } catch (error) {
             console.error('Lỗi khi tải sản phẩm:', error);

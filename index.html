@@ -320,6 +320,7 @@
             <div class="search-container">
                 <input type="text" 
                        class="search-input" 
+                       id="homeSearchInput"
                        placeholder="Tìm kiếm sản phẩm...">
                 <span class="search-icon fas fa-search"></span>
             </div>
@@ -372,12 +373,21 @@
     });
 
     // Thêm chức năng tìm kiếm
-    document.querySelector('.search-input').addEventListener('keypress', function(e) {
+    document.getElementById('homeSearchInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            const searchTerm = this.value.trim().toLowerCase();
+            const searchTerm = this.value.trim();
             if (searchTerm) {
-                window.location.href = `search.html?q=${searchTerm}`;
+                // Chuyển hướng sang trang sản phẩm với tham số tìm kiếm
+                window.location.href = `product.html?search=${encodeURIComponent(searchTerm)}`;
             }
+        }
+    });
+
+    // Thêm sự kiện click cho icon tìm kiếm
+    document.querySelector('.search-icon').addEventListener('click', function() {
+        const searchTerm = document.getElementById('homeSearchInput').value.trim();
+        if (searchTerm) {
+            window.location.href = `product.html?search=${encodeURIComponent(searchTerm)}`;
         }
     });
 
