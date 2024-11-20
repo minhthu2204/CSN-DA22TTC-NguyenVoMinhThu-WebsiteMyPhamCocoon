@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài viết - Cocoon</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Header styles - giống các trang khác */
+        .w3-bar {
+            background-color: #f4e6d4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .w3-bar-item.w3-button {
+            color: #8B4513;
+            transition: all 0.3s ease;
+        }
+
+        .w3-bar-item.w3-button:hover {
+            background-color: rgba(139, 69, 19, 0.1) !important;
+            border-radius: 25px;
+        }
+
+        /* Blog card styles */
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .blog-image-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 60%; /* Tỷ lệ 16:9 */
+        }
+
+        .blog-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Your existing code here -->
+</body>
+</html> 
