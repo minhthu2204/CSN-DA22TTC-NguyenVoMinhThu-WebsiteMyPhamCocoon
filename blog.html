@@ -404,9 +404,35 @@
 
         /* Đảm bảo body không bị che khi có header fixed */
         body {
-            padding-top: 0;
+            padding-top: 120px;
             background-color: #f9f9f9;
             min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background-color: #f4e6d4;
+        }
+
+        .w3-bar {
+            background-color: #f4e6d4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        /* Điều chỉnh padding-top cho phần nội dung */
+        .blog-detail-container {
+            margin-top: 140px; /* Tăng margin-top để tránh bị che khuất */
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
     </style>
 </head>
@@ -443,7 +469,7 @@
                 </a>
                 <a href="cart.html" class="cart-icon" style="margin-right: 0;">
                     <i class="fas fa-shopping-cart"></i>
-                    <span id="cartCount">0</span>
+                    <span class="cart-count">0</span>
                 </a>
             </div>
         </div>
@@ -609,5 +635,22 @@
             
         </div>
     </footer>
+
+    <script>
+        // Hàm cập nhật số lượng sản phẩm trong giỏ hàng
+        function updateCartCount() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartCount = document.querySelector('.cart-count');
+            if (cartItems.length > 0) {
+                cartCount.style.display = 'block';
+                cartCount.textContent = cartItems.length;
+            } else {
+                cartCount.style.display = 'none';
+            }
+        }
+
+        // Gọi hàm khi trang được tải
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
 </body>
 </html> 
