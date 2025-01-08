@@ -3,11 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài viết - Cocoon</title>
+    <title>Bí quyết chăm sóc da mụn hiệu quả - Cocoon</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Header styles - giống các trang khác */
+        /* Header styles */
+        .w3-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #f4e6d4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .w3-right {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .w3-button {
+            border-radius: 25px;
+        }
+
+        .w3-button:hover {
+            background-color: rgba(139, 69, 19, 0.1) !important;
+        }
+
+        .cart-icon {
+            color: #8B4513;
+            padding: 8px 16px;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+        }
+
+        #cartCount {
+            background-color: #8B4513;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .w3-center {
+                font-size: 30px !important;
+            }
+            
+            .w3-right {
+                margin-top: 15px !important;
+            }
+            
+            .w3-button {
+                padding: 6px 12px !important;
+                font-size: 12px !important;
+            }
+        }
+
+        /* Blog detail styles */
+        .blog-detail-container {
+            margin-top: 140px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .blog-title {
+            color: #8B4513;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .blog-meta {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .blog-meta span {
+            margin: 0 15px;
+        }
+
+        .featured-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .blog-content {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .blog-content h2 {
+            color: #8B4513;
+            margin: 30px 0 20px;
+            font-size: 1.8em;
+        }
+
+        .blog-content p {
+            margin-bottom: 20px;
+        }
+
+        .blog-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .content-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tips-list {
+            background: #f4e6d4;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .tips-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .product-recommendation {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+
+        @media (max-width: 600px) {
+            .blog-title {
+                font-size: 1.8em;
+            }
+            
+            .blog-content {
+                font-size: 1em;
+            }
+        }
+
+        /* Cập nhật style cho nút read-more */
+        .read-more {
+            background-color: #8B4513;
+            color: white !important; /* Thêm !important để đảm bảo màu chữ */
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .read-more:hover {
+            background-color: #a0522d;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        /* Header styles */
         .w3-bar {
             background-color: #f4e6d4;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -23,46 +206,408 @@
             border-radius: 25px;
         }
 
-        /* Blog card styles */
-        .blog-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .blog-image-container {
+        /* Cart icon styles */
+        .cart-icon {
             position: relative;
-            overflow: hidden;
-            padding-top: 60%; /* Tỷ lệ 16:9 */
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            text-decoration: none !important;
+            color: #8B4513;
         }
 
-        .blog-image {
+        .cart-icon:hover {
+            text-decoration: none !important;
+            color: #8B4513;
+        }
+
+        .cart-icon i {
+            text-decoration: none !important;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: 5px;
+            background-color: #ff4444;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            min-width: 18px;
+            height: 18px;
+            text-align: center;
+            line-height: 14px;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .w3-center {
+                font-size: 30px !important;
+            }
+            
+            .w3-bar-item.w3-button {
+                padding: 6px 12px !important;
+                font-size: 12px !important;
+            }
+        }
+
+        /* Header và Logo styles */
+        .w3-bar {
+            background-color: #f4e6d4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .logo-text {
+            font-size: 40px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+        }
+
+        .logo-text strong {
+            color: #8B4513;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: #8B4513;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(139, 69, 19, 0.1);
+        }
+
+        .cart-icon {
+            color: #8B4513;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        #cartCount {
+            background-color: #8B4513;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            right: 0;
+            display: none;
         }
 
-        .blog-card:hover .blog-image {
-            transform: scale(1.05);
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 30px;
+                position: static;
+                transform: none;
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .w3-bar {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 10px;
+            }
+
+            .nav-link {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+        .logo-container {
+            background: transparent;
+        }
+
+        .logo-image {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        /* Style cho navigation */
+        .w3-bar-item.w3-button,
+        .w3-button,
+        .nav-link {
+            color: #8B4513 !important;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 25px;
+            text-decoration: none;
+            transform: none !important;
+        }
+
+        .w3-bar-item.w3-button:hover,
+        .w3-button:hover,
+        .nav-link:hover {
+            background-color: rgba(139, 69, 19, 0.1) !important;
+            border-radius: 25px;
+            color: #8B4513 !important;
+            transform: none !important;
+        }
+
+        /* Style cho icon giỏ hàng */
+        .cart-icon {
+            color: #8B4513 !important;
+            padding: 8px 16px;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background-color: rgba(139, 69, 19, 0.1);
+            border-radius: 25px;
+        }
+
+        /* Xóa các style cũ */
+        .w3-hover-none:hover,
+        .w3-hover-text-brown:hover,
+        .w3-bar-item.w3-button.w3-hover-none:hover {
+            /* Xóa các style này */
+        }
+
+        /* Đảm bảo body không bị che khi có header fixed */
+        body {
+            padding-top: 0;
+            background-color: #f9f9f9;
+            min-height: 100vh;
         }
     </style>
 </head>
-<body>
-    <!-- Your existing code here -->
+<body style="background-color: #f9f9f9;">
+    <!-- Thêm header này vào đầu phần body của tất cả các trang blog -->
+    <header>
+        <div class="w3-bar">
+            <div class="w3-bar-item" style="padding:0">
+                <a href="index.html">
+                    <img src="anh/logo.jpg" alt="Cocoon Logo" style="width:100px; height:100px; object-fit: contain;">
+                </a>
+            </div>
+            
+            <div class="w3-center" 
+                 style="font-size:40px;position:absolute;left:50%;transform:translateX(-50%);top:20px;font-family:'Arial Rounded MT Bold'">
+                <strong style="color: #8B4513;">COCOON VIỆT NAM</strong>
+            </div>
+            
+            <div class="w3-right" style="margin-top:25px;">
+                <a href="index.html" 
+                   class="w3-button"
+                   style="color: #8B4513;">
+                    Trang chủ
+                </a>
+                <a href="product.html" 
+                   class="w3-button"
+                   style="color: #8B4513;">
+                    Sản phẩm
+                </a>
+                <a href="blog.html" 
+                   class="w3-button"
+                   style="color: #8B4513;">
+                    Bài viết
+                </a>
+                <a href="cart.html" class="cart-icon" style="margin-right: 0;">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="blog-detail-container">
+        <article>
+            <div class="blog-header">
+                <h1 class="blog-title">Bí quyết chăm sóc da hiệu quả</h1>
+                <div class="blog-meta">
+                    
+                    <span><i class="far fa-eye"></i> 1.2K lượt xem</span>
+                    <span><i class="far fa-clock"></i> 10 phút đọc</span>
+                </div>
+            </div>
+
+           
+
+            <div class="blog-content">
+                
+
+                <h2>1. Nguyên nhân gây mụn</h2>
+                <p>
+                    Có nhiều yếu tố có thể gây ra mụn, bao gồm:
+                </p>
+                <ul class="tips-list">
+                    <li><strong>Hormone:</strong> Thay đổi nội tiết tố là nguyên nhân phổ biến gây mụn</li>
+                    <li><strong>Chế độ ăn uống:</strong> Thực phẩm nhiều đường và dầu mỡ</li>
+                    <li><strong>Stress:</strong> Căng thẳng có thể kích thích sản xuất dầu nhiều hơn</li>
+                    <li><strong>Di truyền:</strong> Yếu tố gen đóng vai trò quan trọng</li>
+                </ul>
+
+                
+                <h2>2. Quy trình chăm sóc da mụn cơ bản</h2>
+                <p>
+                    Một quy trình chăm sóc da mụn hiệu quả cần bao gồm các bước sau:
+                </p>
+                <ol>
+                    <li>Làm sạch da mỗi ngày</li>
+                    <li>Dùng kem dưỡng da thích hợp</li>
+                    <li>Sử dụng kem chống nắng</li>
+                    <li>Sử dụng kem chống lão hóa</li>
+                    <li>Sử dụng kem chống mụn</li>
+                </ol>
+
+                <h2>3. Sử dụng kem chống mụn</h2>
+                <p>
+                    Kem chống mụn là một sản phẩm được sử dụng để điều trị và ngăn ngừa mụn. 
+                    Kem chống mụn có thể giúp giảm thiểu mụn và cải thiện tình trạng da.
+                </p>
+
+                <h2>4. Sử dụng kem chống lão hóa</h2>
+                <p>
+                    Kem chống lão hóa là một sản phẩm được sử dụng để chống lại quá trình lão hóa da. 
+                    Kem chống lão hóa có thể giúp giảm thiểu các dấu hiệu của quá trình lão hóa da.
+                </p>
+
+                <h2>5. Sử dụng kem chống nắng</h2>
+                <p>
+                    Kem chống nắng là một sản phẩm được sử dụng để chống lại tác hại của tia cực tím. 
+                    Kem chống nắng có thể giúp bảo vệ da khỏi tác hại của tia cực tím và giảm thiểu các dấu hiệu của quá trình lão hóa da.
+                </p>
+
+                <h2>6. Làm sạch da mỗi ngày</h2>
+                <p>
+                    Làm sạch da mỗi ngày là một bước quan trọng trong chăm sóc da mụn. 
+                    Làm sạch da mỗi ngày có thể giúp loại bỏ các tạp chất và dầu thừa trên da, giúp da khỏe mạnh và sáng mịn.
+                </p>
+
+                <h2>7. Sử dụng kem dưỡng da thích hợp</h2>
+                <p>
+                    Kem dưỡng da thích hợp là một sản phẩm được sử dụng để cung cấp độ ẩm và dinh dưỡng cho da. 
+                    Kem dưỡng da thích hợp có thể giúp cải thiện tình trạng da và giúp da khỏe mạnh.
+                </p>
+
+                <h2>8. Sử dụng kem chống mụn</h2>
+                <p>
+                    Kem chống mụn là một sản phẩm được sử dụng để điều trị và ngăn ngừa mụn. 
+                    Kem chống mụn có thể giúp giảm thiểu mụn và cải thiện tình trạng da.
+                </p>
+
+                <h2>9. Sử dụng kem chống lão hóa</h2>
+                <p>
+                    Kem chống lão hóa là một sản phẩm được sử dụng để chống lại quá trình lão hóa da. 
+                    Kem chống lão hóa có thể giúp giảm thiểu các dấu hiệu của quá trình lão hóa da.
+                </p>
+
+                <h2>10. Sử dụng kem chống nắng</h2>
+                <p>
+                    Kem chống nắng là một sản phẩm được sử dụng để chống lại tác hại của tia cực tím. 
+                    Kem chống nắng có thể giúp bảo vệ da khỏi tác hại của tia cực tím và giảm thiểu các dấu hiệu của quá trình lão hóa da.
+                </p>
+
+                <h2>11. Làm sạch da mỗi ngày</h2>
+                <p>
+                    Làm sạch da mỗi ngày là một bước quan trọng trong chăm sóc da mụn. 
+                    Làm sạch da mỗi ngày có thể giúp loại bỏ các tạp chất và dầu thừa trên da, giúp da khỏe mạnh và sáng mịn.
+                </p>
+
+                <h2>12. Sử dụng kem dưỡng da thích hợp</h2>
+                <p>
+                    Kem dưỡng da thích hợp là một sản phẩm được sử dụng để cung cấp độ ẩm và dinh dưỡng cho da. 
+                    Kem dưỡng da thích hợp có thể giúp cải thiện tình trạng da và giúp da khỏe mạnh.
+                </p>
+
+                <h2>13. Sử dụng kem chống mụn</h2>
+                <p>
+                    Kem chống mụn là một sản phẩm được sử dụng để điều trị và ngăn ngừa mụn. 
+                    Kem chống mụn có thể giúp giảm thiểu mụn và cải thiện tình trạng da.
+                </p>
+
+                <h2>14. Sử dụng kem chống lão hóa</h2>
+                <p>
+                    Kem chống lão hóa là một sản phẩm được sử dụng để chống lại quá trình lão hóa da. 
+                    Kem chống lão hóa có thể giúp giảm thiểu các dấu hiệu của quá trình lão hóa da.
+                </p>
+
+                <h2>15. Sử dụng kem chống nắng</h2>
+                <p>
+                    Kem chống nắng là một sản phẩm được sử dụng để chống lại tác hại của tia cực tím. 
+                    Kem chống nắng có thể giúp bảo vệ da khỏi tác hại của tia cực tím và giảm thiểu các dấu hiệu của quá trình lão hóa da.
+                </p>
+
+                <h2>16. Làm sạch da mỗi ngày</h2>
+                <p>
+                    Làm sạch da mỗi ngày là một bước quan trọng trong chăm sóc da mụn. 
+                    Làm sạch da mỗi ngày có thể giúp loại bỏ các tạp chất và dầu thừa trên da, giúp da khỏe mạnh và sáng mịn.
+                </p>
+
+                <h2>17. Sử dụng kem dưỡng da thích hợp</h2>
+                <p>
+                    Kem dưỡng da thích hợp là một sản phẩm được sử dụng để cung cấp độ ẩm và dinh dưỡng cho da. 
+                    Kem dưỡng da thích hợp có thể giúp cải thiện tình trạng da và giúp da khỏe mạnh.
+                </p>
+
+                <h2>18. Sử dụng kem chống mụn</h2>
+                <p>
+                    Kem chống mụn là một sản phẩm được sử dụng để điều trị và ngăn ngừa mụn. 
+                    Kem chống mụn có thể giúp giảm thiểu mụn và cải thiện tình trạng da.
+                </p>
+
+                <h2>19. Sử dụng kem chống lão hóa</h2>
+                <p>
+                    Kem chống lão hóa là một sản phẩm được sử dụng để chống lại quá trình lão hóa da. 
+                    Kem chống lão hóa có thể giúp giảm thiểu các dấu hiệu của quá trình lão hóa da.
+                </p>
+
+                <h2>20. Sử dụng kem chống nắng</h2>
+                <p>
+                    Kem chống nắng là một sản phẩm được sử dụng để chống lại tác hại của tia cực tím. 
+                    Kem chống nắng có thể giúp bảo vệ da khỏi tác hại của tia cực tím và giảm thiểu các dấu hiệu của quá trình lão hóa da.
+                </p>
+            </div>
+        </article>
+    </div>
+
+    <!-- Thêm footer vào cuối trang, trước thẻ đóng body -->
+    <footer style="background-color: #f4e6d4; padding: 20px 0; margin-top: 40px;">
+        <div class="w3-container w3-center">
+            <h3 style="color: #8B4513; font-family: 'Arial Rounded MT Bold';">THIẾT KẾ WEBSITE GIỚI THIỆU MỸ PHẨM COCOON BẰNG W3.CSS</h3>
+            <p style="color: #8B4513;">NGUYỄN VÕ MINH THƯ</p>
+            <p style="color: #8B4513;">110122174</p>
+            
+        </div>
+    </footer>
 </body>
 </html> 

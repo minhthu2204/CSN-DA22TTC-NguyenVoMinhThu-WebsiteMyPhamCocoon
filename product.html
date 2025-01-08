@@ -59,36 +59,6 @@
             margin: 10px 0;
         }
 
-        .search-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 8px 40px;
-            border-radius: 20px;
-            border: 2px solid #8B4513;
-            font-size: 1em;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #8B4513;
-            font-size: 1em;
-        }
-
         .w3-bar-item.w3-button:hover {
             background-color: rgba(139, 69, 19, 0.1) !important;
             border-radius: 25px;
@@ -177,78 +147,328 @@
         /* Thêm style cho giỏ hàng trên nav */
         .cart-icon {
             color: #8B4513;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
             text-decoration: none;
             position: relative;
-        }
-
-        .cart-icon:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Cập nhật style cho nav */
-        .w3-bar-item.w3-button {
-            color: #8B4513;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            margin: 0 5px;
-            font-size: 14px;
-        }
-
-        /* Thêm style cho nút scroll-to-top */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #8B4513;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .scroll-to-top:hover {
-            background-color: #a0522d;
-            transform: translateY(-3px);
-        }
-
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
+            display: inline-block;
         }
 
         #cartCount {
             background-color: #8B4513;
             color: white;
             border-radius: 50%;
-            padding: 1px 5px;
-            font-size: 10px;
+            padding: 2px 6px;
+            font-size: 12px;
             position: absolute;
-            top: -5px;
-            right: 8px;
-            min-width: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            top: 0;
+            right: 0;
+            display: none;
         }
 
         .cart-icon i {
             font-size: 18px;
+        }
+
+        .w3-bar-item img {
+            width: 100px !important;
+            height: 100px !important;
+            object-fit: contain;
+        }
+
+        /* Style cho footer */
+        .footer {
+            background-color: #f4e6d4;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+            color: #8B4513;
+            font-size: 16px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .w3-button {
+            color: #8B4513 !important;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .w3-button:hover {
+            color: #ffffff !important;
+            background-color: #8B4513 !important;
+            border-radius: 25px;
+            transform: translateY(-2px);
+        }
+
+        /* Cập nhật style cho icon giỏ hàng */
+        .cart-icon {
+            color: #8B4513;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+        }
+
+        .cart-icon:hover {
+            color: #ffffff;
+            background-color: #8B4513;
+            border-radius: 25px;
+            transform: translateY(-2px);
+        }
+
+        /* Thêm style mới cho navigation */
+        .w3-bar-item.w3-button,
+        .w3-button,
+        .nav-link {
+            color: #8B4513 !important;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 25px;
+            text-decoration: none;
+            transform: none !important;
+        }
+
+        .w3-bar-item.w3-button:hover,
+        .w3-button:hover,
+        .nav-link:hover {
+            background-color: rgba(139, 69, 19, 0.1) !important;
+            border-radius: 25px;
+            color: #8B4513 !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Style cho icon giỏ hàng */
+        .cart-icon {
+            color: #8B4513;
+            padding: 8px 16px;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+            transform: none !important;
+        }
+
+        .cart-icon:hover {
+            background-color: rgba(139, 69, 19, 0.1);
+            border-radius: 25px;
+            color: #8B4513;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Xóa các style hover không cần thiết */
+        .w3-hover-none:hover,
+        .w3-hover-text-brown:hover,
+        .w3-bar-item.w3-button.w3-hover-none:hover {
+            transform: none !important;
+            box-shadow: none;
+        }
+
+        /* Thêm vào phần style */
+        .categories-container {
+            background-color: #f4e6d4;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+
+        .categories-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .category-button {
+            color: #8B4513;
+            background-color: transparent;
+            border: 2px solid #8B4513;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        /* Sửa lại style cho trạng thái active và hover */
+        .category-button:hover,
+        .category-button.active {
+            background-color: #8B4513;
+            color: white;
+        }
+
+        /* Xóa các style hover không cần thiết */
+        .w3-hover-none:hover,
+        .w3-hover-text-brown:hover,
+        .w3-bar-item.w3-button.w3-hover-none:hover {
+            background-color: transparent !important;
+            color: inherit !important;
+        }
+
+        /* Override các style khác có thể ảnh hưởng */
+        .category-button:focus {
+            outline: none;
+        }
+
+        .category-button:active {
+            transform: none;
+        }
+
+        /* Thêm vào phần style */
+        .category-button.gel-button {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header styles - chỉ giữ header cố định */
+        .w3-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #f4e6d4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 0 !important;
+        }
+
+        /* Bỏ position: fixed cho search-container */
+        .search-container {
+            position: relative;
+            margin: 100px auto 20px; /* Điều chỉnh margin-top để không bị che bởi header */
+            max-width: 600px;
+            padding: 0 15px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 40px 12px 20px;
+            border: 2px solid #8B4513;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Điều chỉnh body */
+        body {
+            padding-top: 90px; /* Chỉ cần padding cho header */
+        }
+
+        /* Đảm bảo các phần tử khác không bị ảnh hưởng */
+        .product-list {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cải thiện hiển thị cho các nút lọc */
+        .filter-button {
+            background-color: rgba(139, 69, 19, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .filter-button:hover {
+            background-color: rgba(139, 69, 19, 0.2);
+        }
+
+        /* Điều chỉnh logo */
+        .w3-bar-item.w3-left {
+            padding: 5px 16px;
+        }
+
+        /* Điều chỉnh tiêu đề giữa */
+        .w3-center {
+            padding: 10px 0;
+        }
+
+        /* Điều chỉnh các nút điều hướng */
+        .w3-bar-item.w3-right {
+            padding-top: 5px;
+        }
+
+        /* Đảm bảo các phần tử khác không bị che phủ */
+        .product-list {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Đảm bảo thanh tìm kiếm và bộ lọc không bị che khuất */
+        .search-container, 
+        .filter-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Style cho container chứa các nút */
+        .button-container {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            justify-content: center;
+            align-items: center;
+            height: 35px;
+        }
+
+        /* Style chung cho cả hai nút */
+        .cart-button,
+        .detail-button {
+            flex: 1; /* Cho phép cả hai nút chiếm không gian bằng nhau */
+            background-color: #8B4513;
+            color: white;
+            padding: 0 12px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 0.85em;
+            height: 100%;
+            min-width: 90px; /* Đặt chiều rộng tối thiểu */
+            max-width: 120px; /* Đặt chiều rộng tối đa */
+            white-space: nowrap;
+        }
+
+        /* Icon trong nút */
+        .cart-button i,
+        .detail-button i {
+            font-size: 0.9em;
+            width: 14px; /* Đặt chiều rộng cố định cho icon */
+            text-align: center;
+        }
+
+        /* Text trong nút */
+        .cart-button span,
+        .detail-button span {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Hiệu ứng hover */
+        .cart-button:hover,
+        .detail-button:hover {
+            background-color: #a0522d;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -256,37 +476,34 @@
     <!-- Thay thế phần header cũ -->
     <header>
         <div class="w3-bar w3-padding" style="background-color: #f4e6d4; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-            <div class="w3-bar-item w3-left">
+            <div class="w3-bar-item" style="padding:0">
                 <a href="index.html">
-                    <img src="https://cdn.nuco.vn/static/brand/thumb/cocoon_625849ab1b1c8_600_450_keep_ratio.png" 
-                         alt="Logo" 
-                         class="w3-circle" 
-                         style="width:50px;height:50px;">
+                    <img src="anh/logo.jpg" alt="Cocoon Logo" style="width:100px; height:100px; object-fit: contain;">
                 </a>
             </div>
             
             <div class="w3-center" 
-                 style="font-size:35px;position:absolute;left:50%;transform:translateX(-50%);top:12px;font-family:'Arial Rounded MT Bold'">
+                 style="font-size:40px;position:absolute;left:50%;transform:translateX(-50%);top:20px;font-family:'Arial Rounded MT Bold'">
                 <strong style="color: #8B4513;">COCOON VIỆT NAM</strong>
             </div>
 
-            <div class="w3-bar-item w3-right" style="margin-top:10px">
+            <div class="w3-right" style="margin-top:25px;">
                 <a href="index.html" 
-                   class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown"
+                   class="w3-button w3-hover-none w3-hover-text-brown"
                    style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">
                     Trang chủ
                 </a>
                 <a href="product.html" 
-                   class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown"
+                   class="w3-button w3-hover-none w3-hover-text-brown"
                    style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">
                     Sản phẩm
                 </a>
                 <a href="blog.html" 
-                   class="w3-bar-item w3-button w3-hover-none w3-hover-text-brown"
+                   class="w3-button w3-hover-none w3-hover-text-brown"
                    style="color: #8B4513; transition: all 0.3s ease; padding: 8px 16px; font-size: 14px;">
                     Bài viết
                 </a>
-                <a href="cart.html" class="cart-icon">
+                <a href="cart.html" class="cart-icon" style="padding: 8px 16px;">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cartCount">0</span>
                 </a>
@@ -294,15 +511,23 @@
         </div>
     </header>
 
-    <!-- Thay thế phần thanh tìm kiếm cũ -->
-    <div class="w3-container" style="background-color: #f4e6d4; padding: 15px 0;">
-        <div class="search-container">
-            <input type="text" 
-                   class="search-input" 
-                   placeholder="Tìm kiếm sản phẩm..."
-                   id="searchInput"
-                   onkeyup="searchProducts()">
-            <i class="fas fa-search search-icon"></i>
+    <!-- Thêm ngay sau header -->
+    <div class="categories-container">
+        <div class="categories-list">
+            <button class="category-button active" onclick="filterProducts('all')">Tất cả</button>
+            <button class="category-button" onclick="filterProducts('nuoc-tay-trang')">Nước tẩy trang</button>
+            <button class="category-button" onclick="filterProducts('dau-tay-trang')">Dầu tẩy trang</button>
+            <button class="category-button gel-button" onclick="filterProducts('gel-rua-mat')">Gel rửa mặt</button>
+            <button class="category-button" onclick="filterProducts('nuoc-can-bang')">Nước cân bằng</button>
+            <button class="category-button" onclick="filterProducts('tinh-chat')">Tinh chất</button>
+            <button class="category-button" onclick="filterProducts('tay-te-bao-chet')">Tẩy tế bào chết</button>
+            <button class="category-button" onclick="filterProducts('mat-na')">Mặt nạ</button>
+            <button class="category-button" onclick="filterProducts('sua-chong-nang')">Sữa chống nắng</button>
+            <button class="category-button" onclick="filterProducts('son-duong')">Son dưỡng</button>
+            <button class="category-button" onclick="filterProducts('sua-tam')">Sữa tắm</button>
+            <button class="category-button" onclick="filterProducts('combo-toc')">Combo giảm rãy rụng</button>
+            <button class="category-button" onclick="filterProducts('combo-mun')">Combo da dầu mụn</button>
+            <button class="category-button" onclick="filterProducts('dung-dich-mun')">Dung dịch chấm mụn</button>
         </div>
     </div>
 
@@ -318,6 +543,16 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Thêm vào cuối trang, trước thẻ đóng body -->
+    <footer style="background-color: #f4e6d4; padding: 20px 0; margin-top: 40px;">
+        <div class="w3-container w3-center">
+            <h3 style="color: #8B4513; font-family: 'Arial Rounded MT Bold';">THIẾT KẾ WEBSITE GIỚI THIỆU MỸ PHẨM COCOON BẰNG W3.CSS</h3>
+            <p style="color: #8B4513;">NGUYEXN VÕ MINH THƯ</p>
+            <p style="color: #8B4513;">110122174</p>
+            
+        </div>
+    </footer>
+
     <script>
     // Thêm đoạn code này vào đầu phần script
     document.addEventListener('DOMContentLoaded', function() {
@@ -329,7 +564,7 @@
         if (searchTerm) {
             const searchInput = document.getElementById('searchInput');
             searchInput.value = decodeURIComponent(searchTerm);
-            // Kích hoạt tìm kiếm ngay sau khi trang tải xong
+            // Kch hoạt tìm kiếm ngay sau khi trang tải xong
             setTimeout(() => {
                 searchProducts();
             }, 100);
@@ -351,50 +586,106 @@
     }
 
     // Cập nhật hàm addToCart
-    function addToCart(productId, productName, price) {
+    function addToCart(productId, productName, price, image) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const existingItem = cart.find(item => item.id === productId);
         
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
-            // Tìm sản phẩm trong danh sách sản phẩm để lấy image
-            const product = products.find(p => p.id === productId);
             cart.push({
                 id: productId,
                 name: productName,
                 price: price,
                 quantity: 1,
-                image: product.image
+                image: image
             });
         }
         
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Đã thêm sản phẩm vào giỏ hàng!');
         updateCartCount();
     }
 
     // Biến lưu trữ danh sách sản phẩm
     let products = [];
 
-    // Thêm hàm tìm kiếm sản phẩm
-    function searchProducts() {
-        const searchInput = document.getElementById('searchInput');
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        const productGrid = document.getElementById('productGrid');
+    // Thêm biến để lưu category hiện tại
+    let currentCategory = 'all';
+
+    // Cập nhật hàm filterProducts
+    function filterProducts(category) {
+        currentCategory = category;
         
-        // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
-        if (!searchTerm) {
-            displayProducts(products);
-            return;
+        // Cập nhật trạng thái active của buttons
+        const buttons = document.querySelectorAll('.category-button');
+        buttons.forEach(button => {
+            button.classList.remove('active');
+            if (button.textContent.toLowerCase() === (category === 'all' ? 'tất cả' : getDisplayName(category))) {
+                button.classList.add('active');
+            }
+        });
+
+        // Lọc sản phẩm
+        let filteredProducts = products;
+        if (category !== 'all') {
+            filteredProducts = products.filter(product => {
+                const name = product.name.toLowerCase();
+                switch(category) {
+                    case 'nuoc-tay-trang':
+                        return name.includes('nước tẩy trang');
+                    case 'dau-tay-trang':
+                        return name.includes('dầu tẩy trang');
+                    case 'gel-rua-mat':
+                        return name.includes('gel rữa mặt');
+                    case 'nuoc-can-bang':
+                        return name.includes('nước cân bằng');
+                    case 'tinh-chat':
+                        return name.includes('tinh chất');
+                    case 'tay-te-bao-chet':
+                        return name.includes('tẩy tế bào chết');
+                    case 'mat-na':
+                        return name.includes('mặt nạ');
+                    case 'sua-chong-nang':
+                        return name.includes('sữa chống nắng');
+                    case 'son-duong':
+                        return name.includes('son dưỡng');
+                    case 'sua-tam':
+                        return name.includes('sữa tắm');
+                    case 'combo-toc':
+                        return name.includes('rụng') || name.includes('rãy');
+                    case 'combo-mun':
+                        return name.includes('combo') && (name.includes('mụn') || name.includes('da mụn'));
+                    case 'dung-dich-mun':
+                        return name.includes('dung dịch') && name.includes('mụn');
+                    default:
+                        return true;
+                }
+            });
         }
-        
-        // Lọc sản phẩm theo từ khóa
-        const filteredProducts = products.filter(product => 
-            product.name.toLowerCase().includes(searchTerm)
-        );
-        
+
+        // Log để kiểm tra
+        console.log('Filtered products:', filteredProducts);
         displayProducts(filteredProducts);
+    }
+
+    // Cập nhật hàm getDisplayName
+    function getDisplayName(category) {
+        const displayNames = {
+            'nuoc-tay-trang': 'nước tẩy trang',
+            'dau-tay-trang': 'dầu tẩy trang',
+            'gel-rua-mat': 'gel rửa mặt',
+            'nuoc-can-bang': 'nước cân bằng',
+            'tinh-chat': 'tinh chất',
+            'tay-te-bao-chet': 'tẩy tế bào chết',
+            'mat-na': 'mặt nạ',
+            'sua-chong-nang': 'sữa chống nắng',
+            'son-duong': 'son dưỡng',
+            'sua-tam': 'sữa tắm',
+            'combo-toc': 'combo giảm rãy rụng',
+            'combo-mun': 'combo da dầu mụn',
+            'dung-dich-mun': 'dung dịch chấm mụn'
+        };
+        return displayNames[category] || category;
     }
 
     // Tách logic hiển thị sản phẩm thành hàm riêng
@@ -413,6 +704,32 @@
 
         productsToDisplay.forEach(product => {
             const promotionPrice = Math.floor(product.price * 0.8);
+            // Tạo số sao ngẫu nhiên từ 3.0 đến 5.0 với một chữ số thập phân
+            const randomStars = (Math.random() * 2 + 3).toFixed(1);
+            // Tạo số đánh giá ngẫu nhiên từ 10 đến 500
+            const randomReviews = Math.floor(Math.random() * 491) + 10;
+            
+            // Tạo HTML cho các ngôi sao dựa trên số sao ngẫu nhiên
+            let starsHTML = '';
+            const fullStars = Math.floor(randomStars);
+            const hasHalfStar = randomStars % 1 >= 0.5;
+
+            // Thêm sao đầy
+            for(let i = 0; i < fullStars; i++) {
+                starsHTML += '<i class="fas fa-star" style="color: #FFD700;"></i>';
+            }
+            
+            // Thêm nửa sao nếu cần
+            if(hasHalfStar) {
+                starsHTML += '<i class="fas fa-star-half-alt" style="color: #FFD700;"></i>';
+            }
+            
+            // Thêm sao trống cho đủ 5 sao
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for(let i = 0; i < emptyStars; i++) {
+                starsHTML += '<i class="far fa-star" style="color: #ddd;"></i>';
+            }
+
             productGrid.innerHTML += `
                 <div class="w3-quarter w3-margin-bottom">
                     <div class="product-card">
@@ -426,17 +743,19 @@
                                 <span class="promotion-price">${promotionPrice.toLocaleString()}đ</span>
                             </div>
                             <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="rating-count">(50)</span>
+                                ${starsHTML}
+                                <span class="rating-count">${randomStars}/5 (${randomReviews})</span>
                             </div>
-                            <button class="cart-button" onclick="addToCart(${product.id}, '${product.name}', ${promotionPrice})">
-                                <i class="fas fa-shopping-cart"></i>
-                                Thêm vào giỏ hàng
-                            </button>
+                            <div class="button-container">
+                                <button class="detail-button" onclick="viewDetails(${product.id})">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Chi tiết</span>
+                                </button>
+                                <button class="cart-button" onclick="addToCart(${product.id}, '${product.name}', ${promotionPrice}, '${product.image}')">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>Thêm</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -476,6 +795,17 @@
             scrollButton.classList.remove('visible');
         }
     });
+
+    // Cập nhật hàm viewDetails
+    function viewDetails(productId) {
+        const product = products.find(p => p.id === productId);
+        if (product) {
+            // Lưu sản phẩm vào localStorage
+            localStorage.setItem('selectedProduct', JSON.stringify(product));
+            // Chuyển hướng đến trang chi tiết
+            window.location.href = 'product-detail.html?id=' + productId;
+        }
+    }
     </script>
 </body>
 </html> 

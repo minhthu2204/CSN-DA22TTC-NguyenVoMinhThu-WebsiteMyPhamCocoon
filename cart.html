@@ -9,6 +9,11 @@
     <style>
         /* Header styles */
         .w3-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             background-color: #f4e6d4;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
@@ -26,12 +31,14 @@
         /* Product card styles - giống style trang sản phẩm */
         .product-card {
             transition: transform 0.3s ease;
-            height: 100%;
+            height: auto;
             border-radius: 15px;
             overflow: hidden;
             position: relative;
             background: white;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
 
         .product-card:hover {
@@ -41,12 +48,15 @@
 
         .product-image {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            height: 150px;
+            object-fit: contain;
             transition: transform 0.3s ease;
+            padding: 10px;
+            background-color: white;
         }
 
         .product-info {
+            flex: 1;
             padding: 15px;
             background: #f4e6d4;
         }
@@ -145,17 +155,24 @@
         }
 
         .total-section {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
             background-color: #f4e6d4;
+            padding: 20px 30px;
             border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            width: 400px;
         }
 
         .total-price {
-            font-size: 1.4em;
             color: #8B4513;
+            font-size: 1.4em;
             font-weight: bold;
             margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 2px solid #8B4513;
         }
 
         .empty-cart {
@@ -182,23 +199,185 @@
             background-color: #8B4513;
             color: white;
             width: 100%;
-            padding: 10px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-size: 1.3em;
+            font-weight: bold;
             margin-top: 10px;
-            font-size: 0.9em;
         }
 
         .checkout-btn:hover {
             background-color: #a0522d;
             transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        .product-card > div:first-child {
+            width: 200px;
+            flex-shrink: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-details h3 {
+            margin: 0 0 5px 0;
+            color: #8B4513;
+        }
+
+        .price {
+            color: #ff4444;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-controls button {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-button {
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .remove-button:hover {
+            color: #cc0000;
+        }
+
+        /* Điều chỉnh khoảng cách cho nội dung bên dưới header */
+        .cart-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: 440px;
+            padding-bottom: 100px;
+        }
+
+        /* Đảm bảo body không bị che khi có header fixed */
+        body {
+            padding-top: 0;
+            background-color: #f9f9f9;
+            min-height: 100vh;
+        }
+
+        /* Style cho phần tổng tiền */
+        .cart-total {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #8B4513;
+            padding: 15px 30px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .cart-total h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.2em;
+            white-space: nowrap;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-total:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Điều chỉnh khoảng cách cho cart items */
+        #cartItems {
+            padding-bottom: 80px;
+        }
+
+        /* Giữ nguyên các style khác */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Style cho tiêu đề giỏ hàng */
+        .cart-title {
+            color: #8B4513;
+            font-size: 1.8em;
+            margin-top: 160px; /* Tăng margin-top để dời xuống */
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f4e6d4;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Điều chỉnh container chính */
+        .cart-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Đảm bảo khoảng cách phù hợp cho nội dung */
+        #cartItems {
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -249,8 +428,8 @@
         
         <div class="w3-row-padding">
             <div class="w3-col m8">
-                <div id="cartItems">
-                    <!-- Cart items will be loaded here -->
+                <div class="cart-container">
+                    <div id="cartItems"></div>
                 </div>
             </div>
             
@@ -348,18 +527,18 @@
         }
 
         function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartCount = document.getElementById('cartCount');
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
             
-            if (totalItems === 0) {
-                cartCount.style.display = 'none';
-            } else {
-                cartCount.style.display = 'inline';
-            }
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'inline' : 'none';
         }
 
-        loadCartItems();
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCartItems();
+            updateCartCount();
+        });
     </script>
 </body>
 </html> 

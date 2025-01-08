@@ -26,10 +26,10 @@
         },
         {
             "id": 4,
-            "name": "Sữa rữa mặt cà phê 310ml",
+            "name": "Gel rữa mặt cà phê 310ml",
             "price": 289000,
-            "image": "../anh/srmcf.jpg",
-            "description": "Del rữa mặt cà phê",
+            "image": "../anh/gelrmcf.jpg",
+            "description": "Gel rữa mặt cà phê",
             "is_promotion": true
         },
         {
@@ -172,10 +172,10 @@
         "id": 22,
         "name": "Tẩy tế bào chết cà phê cho Body 200ml",
         "price": 325000,
-      "image": "../anh/taytbcbody.jpg",
+        "image": "../anh/taytbcbody.jpg",
         "description": "Tẩy tế bào chết cho Body",
         "is_promotion": true
-      },
+        },
       {
         "id": 24,
         "name": "Sữa tắm bí đao 310ml",
@@ -188,14 +188,7 @@
         "id": 25,
         "name": "Tinh dầu dưỡng tóc từ bưởi 140ml",
         "price": 165000,
-      "image": "../anh/tinhdautoc.jpg",
-
-
-
-
-
-
-      
+        "image": "../anh/tinhdautoc.jpg",
         "description": "Tinh dầu dưỡng tóc từ bưởi",
         "is_promotion": true
       },
@@ -213,6 +206,22 @@
         "price": 32000,
       "image": "../anh/sonduong.webp",
         "description": "Son dưỡng từ dầu dừa",
+        "is_promotion": true
+      },
+      {
+        "id": 28,
+        "name": "Combo giảm rãy rụng",
+        "price": 430000,
+      "image": "../anh/compogoixa.jpg",
+        "description": "Combo giảm rãy rụng",
+        "is_promotion": true
+      },
+      {
+        "id": 29,
+        "name": "Combo da dầu mụn",
+        "price": 710000,
+      "image": "../anh/compodamun.jpg",
+        "description": "Combo da dầu mụn",
         "is_promotion": true
       }
       

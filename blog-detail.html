@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bí quyết chăm sóc da mụn hiệu quả - Cocoon</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset và style cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Style cho header */
+        .w3-bar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            background-color: #f4e6d4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: 120px;
+        }
+
+        /* Style cho container chính */
+        .blog-detail-container {
+            position: relative;
+            margin-top: 140px;
+            padding: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Style cho body */
+        body {
+            background-color: #f9f9f9;
+            min-height: 100vh;
+            padding-top: 0;
+        }
+
+        /* Đảm bảo các phần tử trong header không bị che */
+        .w3-bar > * {
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* Blog detail styles */
+        .blog-detail-container {
+            margin-top: 140px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .blog-title {
+            color: #8B4513;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .blog-meta {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .blog-meta span {
+            margin: 0 15px;
+        }
+
+        .featured-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .blog-content {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .blog-content h2 {
+            color: #8B4513;
+            margin: 30px 0 20px;
+            font-size: 1.8em;
+        }
+
+        .blog-content p {
+            margin-bottom: 20px;
+        }
+
+        .blog-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .content-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tips-list {
+            background: #f4e6d4;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .tips-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .product-recommendation {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+
+        @media (max-width: 600px) {
+            .blog-title {
+                font-size: 1.8em;
+            }
+            
+            .blog-content {
+                font-size: 1em;
+            }
+        }
+
+        /* Style cho navigation */
+        .w3-button {
+            color: #8B4513 !important;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .w3-button:hover {
+            color: #ffffff !important;
+            background-color: #8B4513 !important;
+            border-radius: 25px;
+            transform: translateY(-2px);
+        }
+
+        /* Style cho icon giỏ hàng */
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+            color: #8B4513 !important;
+            padding: 8px 16px;
+            text-decoration: none;
+            margin-right: 0;
+        }
+
+        #cartCount {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff4444;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            min-width: 18px;
+            height: 18px;
+            text-align: center;
+            line-height: 14px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .cart-icon:hover {
+            background-color: rgba(139, 69, 19, 0.1);
+            border-radius: 25px;
+        }
+
+        /* Style cho header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #f4e6d4;
+        }
+
+        .w3-bar {
+            position: relative;
+            background-color: #f4e6d4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            height: 120px; /* Cố định chiều cao cho header */
+        }
+
+        /* Đảm bảo body không bị che khi có header fixed */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            min-height: 100vh;
+        }
+
+        /* Style cho logo */
+        .w3-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+        }
+
+        /* Style cho số lượng giỏ hàng */
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff4444;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            min-width: 18px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Style cho icon giỏ hàng */
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+            color: #8B4513;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body style="background-color: #f9f9f9;">
+    <!-- Header giữ nguyên như cũ -->
+
+    <div class="blog-detail-container">
+        <article>
+            <div class="blog-header">
+                <h1 class="blog-title">Bí quyết chăm sóc da mụn hiệu quả</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> 20/03/2024</span>
+                    <span><i class="far fa-eye"></i> 1.2K lượt xem</span>
+                    <span><i class="far fa-clock"></i> 10 phút đọc</span>
+                </div>
+            </div>
+
+            <img src="anh/blog1.jpg" alt="Chăm sóc da mụn" class="featured-image">
+
+            <div class="blog-content">
+                <p>
+                    Da mụn là một trong những vấn đề phổ biến nhất mà nhiều người gặp phải. 
+                    Việc chăm sóc da mụn đúng cách không chỉ giúp cải thiện tình trạng mụn 
+                    hiện tại mà còn ngăn ngừa mụn quay trở lại.
+                </p>
+
+                <h2>1. Nguyên nhân gây mụn</h2>
+                <p>
+                    Có nhiều yếu tố có thể gây ra mụn, bao gồm:
+                </p>
+                <ul class="tips-list">
+                    <li><strong>Hormone:</strong> Thay đổi nội tiết tố là nguyên nhân phổ biến gây mụn</li>
+                    <li><strong>Chế độ ăn uống:</strong> Thực phẩm nhiều đường và dầu mỡ</li>
+                    <li><strong>Stress:</strong> Căng thẳng có thể kích thích sản xuất dầu nhiều hơn</li>
+                    <li><strong>Di truyền:</strong> Yếu tố gen đóng vai trò quan trọng</li>
+                </ul>
+
+                <img src="anh/blog1-content1.jpg" alt="Nguyên nhân gây mụn" class="content-image">
+
+                <h2>2. Quy trình chăm sóc da mụn cơ bản</h2>
+                <p>
+                    Một quy trình chăm sóc da mụn hiệu quả cần bao gồm các bước sau:
+                </p>
+                <ol>
+                    <li>Làm sạch da nhẹ nhàng, tránh chà xát mạnh</li>
+                    <li>Sử dụng toner không cồn để cân bằng độ pH</li>
+                    <li>Bôi serum trị mụn chứa các hoạt chất như BHA, AHA</li>
+                    <li>Dưỡng ẩm với kem dạng gel không dầu</li>
+                    <li>Chống nắng mỗi ngày, kể cả khi ở trong nhà</li>
+                </ol>
+
+                <div class="product-recommendation">
+                    <h3 style="color: #8B4513; margin-bottom: 15px;">Sản phẩm gợi ý cho da mụn</h3>
+                    <p>
+                        Cocoon giới thiệu dòng sản phẩm dành riêng cho da mụn, với các thành phần 
+                        tự nhiên như tràm trà, nghệ và nha đam. Các sản phẩm được thiết kế đặc biệt 
+                        để làm dịu da, giảm viêm và ngăn ngừa mụn hiệu quả.
+                    </p>
+                </div>
+
+                <h2>3. Những thói quen cần tránh</h2>
+                <ul class="tips-list">
+                    <li>Không nặn mụn tùy tiện</li>
+                    <li>Tránh sử dụng quá nhiều sản phẩm cùng lúc</li>
+                    <li>Không bỏ qua bước dưỡng ẩm</li>
+                    <li>Tránh chạm tay lên mặt thường xuyên</li>
+                </ul>
+
+                <img src="anh/blog1-content2.jpg" alt="Thói quen cần tránh" class="content-image">
+
+                <h2>4. Chế độ ăn uống hỗ trợ</h2>
+                <p>
+                    Bên cạnh việc chăm sóc da bên ngoài, chế độ ăn uống đóng vai trò quan trọng 
+                    trong việc cải thiện tình trạng da mụn. Hãy bổ sung các thực phẩm giàu:
+                </p>
+                <ul>
+                    <li>Vitamin A, C, E</li>
+                    <li>Kẽm</li>
+                    <li>Omega-3</li>
+                    <li>Chất xơ</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Script giữ nguyên như cũ
+    </script>
+</body>
+</html> 
